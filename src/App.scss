@@ -1,10 +1,5 @@
 @import '~antd/dist/antd.css';
-
-$color1: #264653;
-$color2: #2a9d8f;
-$color3: #e9c46a;
-$color4: #f4a261;
-$color5: #e76f51;
+@import './theme2';
 
 .logo {
   height: 32px;
@@ -18,6 +13,7 @@ $color5: #e76f51;
 
 .ant {
   &-layout {
+    &-sider-trigger,
     &-sider {
       background: $color1;
     }
