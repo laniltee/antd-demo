@@ -1,11 +1,9 @@
 import React from 'react';
-import { Button } from 'antd';
-import './App.css';
+import './App.scss';
+import BillLayout from "./BillLayout";
 
 const App = () => (
-    <div className="App">
-      <Button type="primary">Button</Button>
-    </div>
+    <BillLayout />
 );
 
 export default App;
