@@ -1,5 +1,11 @@
 @import '~antd/dist/antd.css';
 
+$color1: #264653;
+$color2: #2a9d8f;
+$color3: #e9c46a;
+$color4: #f4a261;
+$color5: #e76f51;
+
 .logo {
   height: 32px;
   margin: 16px;
@@ -8,4 +14,25 @@
 
 .site-layout .site-layout-background {
   background: #fff;
+}
+
+.ant {
+  &-layout {
+    &-sider {
+      background: $color1;
+    }
+  }
+
+  &-menu {
+    &.ant-menu-dark {
+      background: $color1;
+
+      &.ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item-selected {
+        background: $color3;
+      }
+      &.ant-menu-inline .ant-menu-sub {
+       background: $color2;
+      }
+    }
+  }
 }
