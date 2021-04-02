@@ -1,9 +1,7 @@
-import React from 'react';
-import './App.scss';
-import BillLayout from "./BillLayout";
+import React from 'react'
+import './App.scss'
+import BillLayout from './BillLayout'
 
-const App = () => (
-    <BillLayout />
-);
+const App = () => <BillLayout />
 
-export default App;
+export default App
