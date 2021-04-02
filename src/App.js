@@ -1,8 +1,7 @@
 import React from 'react';
 import { Button, Space, Upload, Popconfirm } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
-import 'antd/dist/antd.css';
-import './App.scss';
+import './App.less';
 
 const onButtonClick = () => {
   alert("Hello There !!!");
