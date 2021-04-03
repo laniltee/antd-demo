@@ -24,7 +24,10 @@
       "react-app",
       "react-app/jest",
       "plugin:prettier/recommended"
-    ]
+    ],
+    "rules": {
+      "prettier/prettier": "warn"
+    }
   },
   "browserslist": {
     "production": [
