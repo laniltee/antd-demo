@@ -1,4 +1,4 @@
-import { Layout, Menu, Breadcrumb } from 'antd'
+import { Layout, Menu, Breadcrumb, Row, Col, Card } from 'antd'
 import {
   DesktopOutlined,
   PieChartOutlined,
@@ -54,7 +54,25 @@ const BillLayout = () => {
             className="site-layout-background"
             style={{ padding: 24, minHeight: 360 }}
           >
-            Bill is a cat.
+            <div className="site-card-wrapper">
+              <Row gutter={[16, { xs: 8, sm: 16, md: 24, lg: 32 }]}>
+                <Col lg={{ span: 8 }} sm={{ span: 24 }} xs={{ span: 24 }}>
+                  <Card title="Card title" bordered={false}>
+                    Card content
+                  </Card>
+                </Col>
+                <Col lg={{ span: 8 }} sm={{ span: 24 }} xs={{ span: 24 }}>
+                  <Card title="Card title" bordered={false}>
+                    Card content
+                  </Card>
+                </Col>
+                <Col lg={{ span: 8 }} sm={{ span: 24 }} xs={{ span: 24 }}>
+                  <Card title="Card title" bordered={false}>
+                    Card content
+                  </Card>
+                </Col>
+              </Row>
+            </div>
           </div>
         </Content>
         <Footer style={{ textAlign: 'center' }}>
