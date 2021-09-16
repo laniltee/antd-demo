@@ -15,11 +15,12 @@ const BillLayout = () => {
   const [isCollapsed, setIsCollapsed] = useState(false)
 
   return (
-    <Layout style={{ minHeight: '100vh' }}>
+    <Layout style={{ minHeight: '100vh' }} >
       <Sider
         collapsible
         collapsed={isCollapsed}
         onCollapse={() => setIsCollapsed(!isCollapsed)}
+        theme="dark"
       >
         <div className="logo" />
         <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
