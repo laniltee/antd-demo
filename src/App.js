@@ -1,6 +1,6 @@
 import React from 'react'
-import './new.css'
 import 'antd/dist/antd.less'
+import './new.css'
 // import 'antd/dist/antd.dark.less'
 import BillLayout from './BillLayout'
 
