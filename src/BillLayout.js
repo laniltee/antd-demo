@@ -7,6 +7,7 @@ import {
   UserOutlined,
 } from '@ant-design/icons'
 import { useState } from 'react'
+import MyCard from './MyCard'
 
 const { Header, Content, Footer, Sider } = Layout
 const { SubMenu } = Menu
@@ -15,7 +16,7 @@ const BillLayout = () => {
   const [isCollapsed, setIsCollapsed] = useState(false)
 
   return (
-    <Layout style={{ minHeight: '100vh' }} >
+    <Layout style={{ minHeight: '100vh' }}>
       <Sider
         collapsible
         collapsed={isCollapsed}
@@ -57,21 +58,9 @@ const BillLayout = () => {
           >
             <div className="site-card-wrapper">
               <Row gutter={[16, { xs: 8, sm: 16, md: 24, lg: 32 }]}>
-                <Col lg={{ span: 8 }} sm={{ span: 24 }} xs={{ span: 24 }}>
-                  <Card title="Card title" bordered={false}>
-                    Card content
-                  </Card>
-                </Col>
-                <Col lg={{ span: 8 }} sm={{ span: 24 }} xs={{ span: 24 }}>
-                  <Card title="Card title" bordered={false}>
-                    Card content
-                  </Card>
-                </Col>
-                <Col lg={{ span: 8 }} sm={{ span: 24 }} xs={{ span: 24 }}>
-                  <Card title="Card title" bordered={false}>
-                    Card content
-                  </Card>
-                </Col>
+                <MyCard />
+                <MyCard />
+                <MyCard />
               </Row>
             </div>
           </div>
