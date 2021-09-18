@@ -1,4 +1,4 @@
-import { Layout, Menu, PageHeader, Select } from 'antd'
+import { Layout, Menu, PageHeader } from 'antd'
 import {
   DesktopOutlined,
   PieChartOutlined,
@@ -9,7 +9,6 @@ import {
 import { useState } from 'react'
 import SiteCardWrapper from './menuItems/siteCardWrapper'
 import NotFound from './menuItems/notFound'
-import { Option } from 'antd/es/mentions'
 import OrganizationSelector from './components/organizationSelector'
 
 const { Header, Content, Footer, Sider } = Layout
