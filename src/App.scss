@@ -1,8 +1,7 @@
 @import '~antd/dist/antd.css';
 //@import './theme1';
-@import './theme2'; uncomment this and comment above to switch the color pallete
-
-.logo {
+@import './theme2';
+uncomment this and comment above to switch the color pallete .logo {
   height: 32px;
   margin: 16px;
   background: rgba(255, 255, 255, 0.3);
