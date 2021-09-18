@@ -3,7 +3,9 @@ import { useGetUserByIdQuery } from '../api/users'
 
 const OrganizationDrawer = ({ onClose, visible, selectedOrganization }) => {
   // eslint-disable-next-line no-unused-vars
-  const { data, error, isLoading } = useGetUserByIdQuery(selectedOrganization)
+  const { data, error, isLoading } = useGetUserByIdQuery(selectedOrganization, {
+    skip: !selectedOrganization,
+  })
 
   return (
     <Drawer
