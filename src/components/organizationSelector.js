@@ -1,9 +1,15 @@
 import React, { useState } from 'react'
 import { Button, Drawer, Select, Tooltip } from 'antd'
 import { SearchOutlined } from '@ant-design/icons'
+import { useGetUsersQuery } from '../api/users'
+import OrganizationDrawer from './organizationDrawer'
 
 const OrganizationSelector = () => {
+  const { data, error, isLoading } = useGetUsersQuery()
   const [visible, setVisible] = useState(false)
+
+  const [selectedOrganization, setSelectedOrganization] = useState(undefined)
+
   const showDrawer = () => {
     setVisible(true)
   }
@@ -13,13 +19,24 @@ const OrganizationSelector = () => {
 
   return (
     <>
-      <Select defaultValue="lucy" style={{ width: 120 }}>
-        <Select.Option value="jack">Jack</Select.Option>
-        <Select.Option value="lucy">Lucy</Select.Option>
-        <Select.Option value="disabled" disabled>
-          Disabled
-        </Select.Option>
-        <Select.Option value="Yiminghe">yiminghe</Select.Option>
+      <Select
+        style={{ width: 120 }}
+        loading={isLoading}
+        dropdownMatchSelectWidth={false}
+        value={selectedOrganization}
+        onChange={(e) => setSelectedOrganization(e)}
+        placeholder="Select Org"
+      >
+        {data &&
+          data.map((user) => (
+            <Select.Option
+              key={`user_${user.id}`}
+              id={`user_${user.id}`}
+              value={user.id.toString()}
+            >
+              {user.name}
+            </Select.Option>
+          ))}
       </Select>
       <Tooltip title="search">
         <Button
@@ -29,16 +46,11 @@ const OrganizationSelector = () => {
           icon={<SearchOutlined />}
         />
       </Tooltip>
-      <Drawer
-        title="Basic Drawer"
-        placement="right"
-        onClose={onClose}
+      <OrganizationDrawer
         visible={visible}
-      >
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-      </Drawer>
+        onClose={onClose}
+        selectedOrganization={selectedOrganization}
+      />
     </>
   )
 }
