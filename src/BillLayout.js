@@ -1,4 +1,4 @@
-import { Layout, Menu, PageHeader } from 'antd'
+import { Layout, Menu, PageHeader, Select } from 'antd'
 import {
   DesktopOutlined,
   PieChartOutlined,
@@ -9,6 +9,8 @@ import {
 import { useState } from 'react'
 import SiteCardWrapper from './menuItems/siteCardWrapper'
 import NotFound from './menuItems/notFound'
+import { Option } from 'antd/es/mentions'
+import OrganizationSelector from './components/organizationSelector'
 
 const { Header, Content, Footer, Sider } = Layout
 const { SubMenu } = Menu
@@ -66,7 +68,9 @@ const BillLayout = () => {
         </Menu>
       </Sider>
       <Layout className="site-layout">
-        <Header className="site-layout-background" style={{ padding: 0 }} />
+        <Header className="site-layout-background" style={{ padding: 0 }}>
+          <OrganizationSelector />
+        </Header>
         <Content style={{ margin: '0 16px' }}>
           <PageHeader
             className="site-page-header"
