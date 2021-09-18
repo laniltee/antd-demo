@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
-import { Button, Drawer, Select, Tooltip } from 'antd'
+import { Button, Select, Tooltip } from 'antd'
 import { SearchOutlined } from '@ant-design/icons'
 import { useGetUsersQuery } from '../api/users'
 import OrganizationDrawer from './organizationDrawer'
 
 const OrganizationSelector = () => {
+  // eslint-disable-next-line no-unused-vars
   const { data, error, isLoading } = useGetUsersQuery()
   const [visible, setVisible] = useState(false)
 
