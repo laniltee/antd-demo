@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
 import { Drawer } from 'antd'
+import { useGetUserByIdQuery } from '../api/users'
 
-const OrganizationDrawer = ({ onClose, visible }) => {
+const OrganizationDrawer = ({ onClose, visible, selectedOrganization }) => {
+  const { data, error, isLoading } = useGetUserByIdQuery(selectedOrganization)
+
   return (
     <Drawer
       title="Basic Drawer"
@@ -9,9 +12,10 @@ const OrganizationDrawer = ({ onClose, visible }) => {
       onClose={onClose}
       visible={visible}
     >
-      <p>Some contents...</p>
-      <p>Some contents...</p>
-      <p>Some contents...</p>
+      <p>Owner Name: {data?.name}</p>
+      <p>Company Name: {data?.company?.name}</p>
+      <p>Catch Phrase: {data?.company?.catchPhrase}</p>
+      <p>BS: {data?.company?.bs}</p>
     </Drawer>
   )
 }
