@@ -1,4 +1,4 @@
-import { Drawer } from 'antd'
+import { Drawer, Skeleton } from 'antd'
 import { useGetUserByIdQuery } from '../api/users'
 
 const OrganizationDrawer = ({ onClose, visible, selectedOrganization }) => {
@@ -14,10 +14,26 @@ const OrganizationDrawer = ({ onClose, visible, selectedOrganization }) => {
       onClose={onClose}
       visible={visible}
     >
-      <p>Owner Name: {data?.name}</p>
-      <p>Company Name: {data?.company?.name}</p>
-      <p>Catch Phrase: {data?.company?.catchPhrase}</p>
-      <p>BS: {data?.company?.bs}</p>
+      {isLoading ? (
+        <Skeleton.Input style={{ width: 200 }} active />
+      ) : (
+        <p>Owner Name: {data?.name}</p>
+      )}
+      {isLoading ? (
+        <Skeleton.Input style={{ width: 200 }} active />
+      ) : (
+        <p>Company Name: {data?.company?.name}</p>
+      )}
+      {isLoading ? (
+        <Skeleton.Input style={{ width: 200 }} active />
+      ) : (
+        <p>Catch Phrase: {data?.company?.catchPhrase}</p>
+      )}
+      {isLoading ? (
+        <Skeleton.Input style={{ width: 200 }} active />
+      ) : (
+        <p>BS: {data?.company?.bs}</p>
+      )}
     </Drawer>
   )
 }
