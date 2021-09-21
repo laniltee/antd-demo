@@ -1,4 +1,4 @@
-import { fireEvent, getByLabelText, render } from '@testing-library/react'
+import { fireEvent, render } from '@testing-library/react'
 import OrganizationDrawer from '../organizationDrawer'
 
 import { useGetUserByIdQuery } from '../../api/users'
