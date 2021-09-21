@@ -1,4 +1,4 @@
-import { Layout, Menu, PageHeader } from 'antd'
+import { Layout, Menu, PageHeader, Switch } from 'antd'
 import {
   DesktopOutlined,
   PieChartOutlined,
@@ -10,6 +10,7 @@ import { useState } from 'react'
 import SiteCardWrapper from './menuItems/siteCardWrapper'
 import NotFound from './menuItems/notFound'
 import OrganizationSelector from './components/organizationSelector'
+import LocaleContext from './contexts/localeContext'
 
 const { Header, Content, Footer, Sider } = Layout
 const { SubMenu } = Menu
@@ -26,6 +27,7 @@ const getMenuSwitch = (selectedMenu) => {
 const BillLayout = () => {
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [selectedMenu, setSelectedMenu] = useState('1')
+  const [locale, setLocale] = useState('en')
 
   const onSelect = ({ key }) => {
     setSelectedMenu(key.toString())
@@ -76,12 +78,21 @@ const BillLayout = () => {
             onBack={() => null}
             title={`Page ${selectedMenu}`}
             subTitle="This is a subtitle?"
-          />
+          >
+            <Switch
+              checkedChildren="English"
+              unCheckedChildren="සිංහල"
+              checked={locale === 'en'}
+              onChange={() => setLocale(locale === 'en' ? 'si' : 'en')}
+            />
+          </PageHeader>
           <div
             className="site-layout-background"
             style={{ padding: 24, minHeight: 360 }}
           >
-            {getMenuSwitch(selectedMenu)}
+            <LocaleContext.Provider value={locale}>
+              {getMenuSwitch(selectedMenu)}
+            </LocaleContext.Provider>
           </div>
         </Content>
         <Footer style={{ textAlign: 'center' }}>
