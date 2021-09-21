@@ -14,6 +14,7 @@ describe('OrganizationDrawer', () => {
         company: {
           name: 'Test Company Name',
           catchPhrase: 'Test Catch Phrase',
+          bs: 'Test BS',
         },
       },
     })
@@ -31,6 +32,7 @@ describe('OrganizationDrawer', () => {
     expect(getByText(/Test Name/)).toBeTruthy()
     expect(getByText(/Test Company Name/)).toBeTruthy()
     expect(getByText(/Test Catch Phrase/)).toBeTruthy()
+    expect(getByText(/Test BS/)).toBeTruthy()
 
     fireEvent.click(getByLabelText('Close'))
     expect(mockOnClose).toHaveBeenCalled()
