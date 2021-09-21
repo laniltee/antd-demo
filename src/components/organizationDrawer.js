@@ -20,22 +20,22 @@ const OrganizationDrawer = ({ onClose, visible, selectedOrganization }) => {
       {isFetching ? (
         <Skeleton.Input style={{ width: 200 }} active />
       ) : (
-        <p>Owner Name: {data?.name}</p>
+        <p className="mb-2">Owner Name: {data?.name}</p>
       )}
       {isFetching ? (
         <Skeleton.Input style={{ width: 200 }} active />
       ) : (
-        <p>Company Name: {data?.company?.name}</p>
+        <p className="mb-2">Company Name: {data?.company?.name}</p>
       )}
       {isFetching ? (
         <Skeleton.Input style={{ width: 200 }} active />
       ) : (
-        <p>Catch Phrase: {data?.company?.catchPhrase}</p>
+        <p className="mb-2">Catch Phrase: {data?.company?.catchPhrase}</p>
       )}
       {isFetching ? (
         <Skeleton.Input style={{ width: 200 }} active />
       ) : (
-        <p>BS: {data?.company?.bs}</p>
+        <p className="mb-2">BS: {data?.company?.bs}</p>
       )}
     </Drawer>
   )
