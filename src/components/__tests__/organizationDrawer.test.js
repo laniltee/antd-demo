@@ -9,7 +9,7 @@ describe('OrganizationDrawer', () => {
 
   it('renders OrganizationDrawer with data from useGetUserByIdQuery', () => {
     useGetUserByIdQuery.mockReturnValue({
-      isLoading: false,
+      isFetching: false,
       data: {
         name: 'Test Name',
         company: {
