@@ -1,24 +1,38 @@
-import { render } from '@testing-library/react'
+import { fireEvent, getByLabelText, render } from '@testing-library/react'
 import OrganizationDrawer from '../organizationDrawer'
-import { Provider as ReduxProvider } from 'react-redux'
-import store from '../../state/store'
 
+import { useGetUserByIdQuery } from '../../api/users'
 jest.mock('../../api/users')
 
 describe('OrganizationDrawer', () => {
   const mockOnClose = jest.fn()
 
   it('renders OrganizationDrawer with data from useGetUserByIdQuery', () => {
-    const { debug } = render(
-      <ReduxProvider store={store}>
-        <OrganizationDrawer
-          onClose={mockOnClose}
-          selectedOrganization={1}
-          visible={true}
-        />
-      </ReduxProvider>
+    useGetUserByIdQuery.mockReturnValue({
+      data: {
+        name: 'Test Name',
+        company: {
+          name: 'Test Company Name',
+          catchPhrase: 'Test Catch Phrase',
+        },
+      },
+    })
+
+    const { getByText, getByLabelText, debug } = render(
+      <OrganizationDrawer
+        onClose={mockOnClose}
+        selectedOrganization={1}
+        visible={true}
+      />
     )
 
     console.log(debug())
+
+    expect(getByText(/Test Name/)).toBeTruthy()
+    expect(getByText(/Test Company Name/)).toBeTruthy()
+    expect(getByText(/Test Catch Phrase/)).toBeTruthy()
+
+    fireEvent.click(getByLabelText('Close'))
+    expect(mockOnClose).toHaveBeenCalled()
   })
 })
