@@ -11,6 +11,8 @@ import SiteCardWrapper from './menuItems/siteCardWrapper'
 import NotFound from './menuItems/notFound'
 import OrganizationSelector from './components/organizationSelector'
 import LocaleContext from './contexts/localeContext'
+import './locales/i18n'
+import i18n from 'i18next'
 
 const { Header, Content, Footer, Sider } = Layout
 const { SubMenu } = Menu
@@ -83,7 +85,11 @@ const BillLayout = () => {
               checkedChildren="English"
               unCheckedChildren="සිංහල"
               checked={locale === 'en'}
-              onChange={() => setLocale(locale === 'en' ? 'si' : 'en')}
+              onChange={() => {
+                const newLocale = locale === 'en' ? 'si' : 'en'
+                setLocale(newLocale)
+                i18n.changeLanguage(newLocale)
+              }}
             />
           </PageHeader>
           <div
