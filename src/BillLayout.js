@@ -1,4 +1,4 @@
-import { Layout, Menu, Breadcrumb } from 'antd'
+import { Layout, Menu, PageHeader } from 'antd'
 import {
   DesktopOutlined,
   PieChartOutlined,
@@ -7,12 +7,29 @@ import {
   UserOutlined,
 } from '@ant-design/icons'
 import { useState } from 'react'
+import SiteCardWrapper from './menuItems/siteCardWrapper'
+import NotFound from './menuItems/notFound'
+import OrganizationSelector from './components/organizationSelector'
 
 const { Header, Content, Footer, Sider } = Layout
 const { SubMenu } = Menu
 
+const getMenuSwitch = (selectedMenu) => {
+  switch (selectedMenu) {
+    case '1':
+      return <SiteCardWrapper />
+    default:
+      return <NotFound />
+  }
+}
+
 const BillLayout = () => {
   const [isCollapsed, setIsCollapsed] = useState(false)
+  const [selectedMenu, setSelectedMenu] = useState('1')
+
+  const onSelect = ({ key }) => {
+    setSelectedMenu(key.toString())
+  }
 
   return (
     <Layout style={{ minHeight: '100vh' }}>
@@ -20,9 +37,15 @@ const BillLayout = () => {
         collapsible
         collapsed={isCollapsed}
         onCollapse={() => setIsCollapsed(!isCollapsed)}
+        theme="dark"
       >
         <div className="logo" />
-        <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
+        <Menu
+          theme="dark"
+          defaultSelectedKeys={['1']}
+          mode="inline"
+          onSelect={onSelect}
+        >
           <Menu.Item key="1" icon={<PieChartOutlined />}>
             Option 1
           </Menu.Item>
@@ -44,17 +67,21 @@ const BillLayout = () => {
         </Menu>
       </Sider>
       <Layout className="site-layout">
-        <Header className="site-layout-background" style={{ padding: 0 }} />
+        <Header className="site-layout-background" style={{ padding: 0 }}>
+          <OrganizationSelector />
+        </Header>
         <Content style={{ margin: '0 16px' }}>
-          <Breadcrumb style={{ margin: '16px 0' }}>
-            <Breadcrumb.Item>User</Breadcrumb.Item>
-            <Breadcrumb.Item>Bill</Breadcrumb.Item>
-          </Breadcrumb>
+          <PageHeader
+            className="site-page-header"
+            onBack={() => null}
+            title={`Page ${selectedMenu}`}
+            subTitle="This is a subtitle?"
+          />
           <div
             className="site-layout-background"
             style={{ padding: 24, minHeight: 360 }}
           >
-            Bill is a cat.
+            {getMenuSwitch(selectedMenu)}
           </div>
         </Content>
         <Footer style={{ textAlign: 'center' }}>
