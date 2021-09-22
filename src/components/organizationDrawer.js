@@ -1,11 +1,14 @@
-import { Drawer } from 'antd'
+import { Drawer, Skeleton } from 'antd'
 import { useGetUserByIdQuery } from '../api/users'
 
 const OrganizationDrawer = ({ onClose, visible, selectedOrganization }) => {
   // eslint-disable-next-line no-unused-vars
-  const { data, error, isLoading } = useGetUserByIdQuery(selectedOrganization, {
-    skip: !selectedOrganization,
-  })
+  const { data, error, isFetching } = useGetUserByIdQuery(
+    selectedOrganization,
+    {
+      skip: !selectedOrganization,
+    }
+  )
 
   return (
     <Drawer
@@ -14,10 +17,26 @@ const OrganizationDrawer = ({ onClose, visible, selectedOrganization }) => {
       onClose={onClose}
       visible={visible}
     >
-      <p>Owner Name: {data?.name}</p>
-      <p>Company Name: {data?.company?.name}</p>
-      <p>Catch Phrase: {data?.company?.catchPhrase}</p>
-      <p>BS: {data?.company?.bs}</p>
+      {isFetching ? (
+        <Skeleton.Input style={{ width: 200 }} active />
+      ) : (
+        <p className="mb-2">Owner Name: {data?.name}</p>
+      )}
+      {isFetching ? (
+        <Skeleton.Input style={{ width: 200 }} active />
+      ) : (
+        <p className="mb-2">Company Name: {data?.company?.name}</p>
+      )}
+      {isFetching ? (
+        <Skeleton.Input style={{ width: 200 }} active />
+      ) : (
+        <p className="mb-2">Catch Phrase: {data?.company?.catchPhrase}</p>
+      )}
+      {isFetching ? (
+        <Skeleton.Input style={{ width: 200 }} active />
+      ) : (
+        <p className="mb-2">BS: {data?.company?.bs}</p>
+      )}
     </Drawer>
   )
 }
